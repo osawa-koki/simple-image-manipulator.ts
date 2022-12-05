@@ -36,6 +36,7 @@ class Resize extends React.Component {
     await this.File2Jimp(file).then((image: Jimp): void => {
       this.image = image;
     });
+    console.log(this.image);
   };
 
   FileSelected = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
