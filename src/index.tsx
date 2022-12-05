@@ -8,6 +8,7 @@ import './index.scss';
 import Settings from './Common/Settings';
 
 import Root from './Pages/Root';
+import Resize from './Pages/Resize';
 import NotFound from './Pages/NotFound';
 
 const root = ReactDOM.createRoot(
@@ -18,6 +19,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path={`${Settings.ROOT_PATH}/`} element={<Root />} />
+        <Route path={`${Settings.ROOT_PATH}/resize`} element={<Resize />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
