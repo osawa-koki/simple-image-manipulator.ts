@@ -7,8 +7,8 @@ import './Root.scss';
 function Root() {
   return (
     <div id="Root">
-      <Link className='RootLink' to={`${Settings.ROOT_PATH}/description`}>リサイズ</Link>
-      <Link className='RootLink' to={`${Settings.ROOT_PATH}/demo`}>フォーマット変更</Link>
+      <Link className='RootLink' to={`${Settings.ROOT_PATH}/resize`}>リサイズ</Link>
+      <Link className='RootLink' to={`${Settings.ROOT_PATH}/change-format`}>フォーマット変更</Link>
     </div>
   );
 }

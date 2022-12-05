@@ -1,6 +1,7 @@
 
 #Root {
   display: flex;
+  flex-wrap: wrap;
   margin: 50px auto;
   max-width: 1200px;
   padding: 1rem;
@@ -8,16 +9,10 @@
     display: block;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    img {
-      display: block;
-      width: 150px;
-      aspect-ratio: 1 / 1;
-      border: 1px gray solid;
-      transition: all 0.3s;
-      &:hover {
-        border: 1px solid solid;
-        transform: scale(1.05);
-      }
+    color: blue;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
