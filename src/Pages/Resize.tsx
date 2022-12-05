@@ -58,7 +58,7 @@ class Resize extends React.Component {
       <div id="Resize">
         <h1>リサイズ</h1>
         <p>画像をリサイズします。</p>
-        <input id="drag-div" onDrop={this.FileDropped}></input>
+        <input id="drag-div" onDrop={this.FileDropped} placeholder="ドラッグ＆ドロップ" />
         <input type="file" onChange={this.FileSelected} />
       </div>
     );
