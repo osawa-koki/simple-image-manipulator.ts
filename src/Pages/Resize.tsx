@@ -6,8 +6,26 @@ import './Resize.scss';
 
 class Resize extends React.Component {
 
-  FileDropped = (event: React.DragEvent<HTMLInputElement>): void => {
-    console.log("DROPPED");
+  image: Jimp | null = null;
+
+  File2Jimp = async (file: File): Promise<Jimp> => {
+    return await new Promise((resolve, reject): void => {
+      const reader = new FileReader();
+      reader.onload = (event: ProgressEvent<FileReader>): void => {
+        if (event.target === null) {
+          reject();
+          return;
+        }
+        const data = event.target.result as ArrayBuffer;
+        Jimp.read(data as Buffer).then((image: Jimp): void => {
+          resolve(image);
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  };
+
+  FileDropped = async (event: React.DragEvent<HTMLInputElement>): Promise<void> => {
     event.preventDefault();
     event.stopPropagation();
     const files = event.dataTransfer.files;
@@ -15,38 +33,21 @@ class Resize extends React.Component {
       return;
     }
     const file = files[0];
-    const reader = new FileReader();
-    reader.onload = (event: ProgressEvent<FileReader>): void => {
-      if (event.target === null) {
-        return;
-      }
-      const data = event.target.result as ArrayBuffer;
-      Jimp.read(data as Buffer).then((image: Jimp): void => {
-        console.log(image);
-      });
-    };
-    reader.readAsArrayBuffer(file);
+    await this.File2Jimp(file).then((image: Jimp): void => {
+      this.image = image;
+    });
   };
 
-  FileSelected = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  FileSelected = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const files = event.target.files;
     if (files === null) {
       return;
     }
     const file = files[0];
-    const reader = new FileReader();
-    reader.onload = (event: ProgressEvent<FileReader>): void => {
-      if (event.target === null) {
-        return;
-      }
-      const data = event.target.result as ArrayBuffer;
-      Jimp.read(data as Buffer).then((image: Jimp): void => {
-        console.log(image);
-      });
-    };
-    reader.readAsArrayBuffer(file);
+    await this.File2Jimp(file).then((image: Jimp): void => {
+      this.image = image;
+    });
   };
-
 
   componentDidMount(): void {
     //
