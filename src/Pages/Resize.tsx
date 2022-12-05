@@ -6,7 +6,7 @@ import './Resize.scss';
 
 class Resize extends React.Component {
 
-  FileDropped = (event: React.DragEvent<HTMLDivElement>): void => {
+  FileDropped = (event: React.DragEvent<HTMLInputElement>): void => {
     console.log("DROPPED");
     event.preventDefault();
     event.stopPropagation();
@@ -57,7 +57,7 @@ class Resize extends React.Component {
       <div id="Resize">
         <h1>リサイズ</h1>
         <p>画像をリサイズします。</p>
-        <div id="drag-div" onDrop={this.FileDropped}></div>
+        <input id="drag-div" onDrop={this.FileDropped}></input>
         <input type="file" onChange={this.FileSelected} />
       </div>
     );
