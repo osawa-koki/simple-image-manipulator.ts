@@ -5,24 +5,6 @@ import Dropzone , { useDropzone } from 'react-dropzone';
 
 import './Resize.scss';
 
-function MyDropzone() {
-  const onDrop = useCallback(() => {
-    // Do something with the files
-  }, []);
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
-
-  return (
-    <div {...getRootProps()}>
-      <input {...getInputProps()} />
-      {
-        isDragActive ?
-          <p>Drop the files here ...</p> :
-          <p>Drag 'n' drop some files here, or click to select files</p>
-      }
-    </div>
-  )
-}
-
 class Resize extends React.Component {
 
   image: Jimp | null = null;
@@ -78,8 +60,6 @@ class Resize extends React.Component {
       <div id="Resize">
         <h1>リサイズ</h1>
         <p>画像をリサイズします。</p>
-        <button id="drag-div" onDrop={this.FileDropped} placeholder="ドラッグ＆ドロップ" />
-        <input type="file" onChange={this.FileSelected} />
         <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
           {({getRootProps, getInputProps}) => (
             <section>
