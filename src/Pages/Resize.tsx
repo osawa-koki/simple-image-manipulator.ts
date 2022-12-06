@@ -26,29 +26,12 @@ class Resize extends React.Component {
     });
   };
 
-  FileDropped = async (event: React.DragEvent<HTMLElement>): Promise<void> => {
-    event.preventDefault();
-    event.stopPropagation();
-    const files = event.dataTransfer.files;
-    if (files === null) {
-      return;
-    }
-    const file = files[0];
+  FileDropped = async (acceptedFiles: File[]): Promise<void> => {
+    const file = acceptedFiles[0];
     await this.File2Jimp(file).then((image: Jimp): void => {
       this.image = image;
     });
     console.log(this.image);
-  };
-
-  FileSelected = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const files = event.target.files;
-    if (files === null) {
-      return;
-    }
-    const file = files[0];
-    await this.File2Jimp(file).then((image: Jimp): void => {
-      this.image = image;
-    });
   };
 
   componentDidMount(): void {
@@ -60,12 +43,12 @@ class Resize extends React.Component {
       <div id="Resize">
         <h1>リサイズ</h1>
         <p>画像をリサイズします。</p>
-        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+        <Dropzone onDrop={(files: File[]) => {this.FileDropped(files)}}>
           {({getRootProps, getInputProps}) => (
             <section>
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>画像ファイルをドロップして下さい。</p>
               </div>
             </section>
           )}
