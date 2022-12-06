@@ -1,8 +1,27 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 
-import Jimp from "jimp/browser/lib/jimp"
+import Jimp from 'jimp/browser/lib/jimp'
+import Dropzone , { useDropzone } from 'react-dropzone';
 
 import './Resize.scss';
+
+function MyDropzone() {
+  const onDrop = useCallback(() => {
+    // Do something with the files
+  }, []);
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+
+  return (
+    <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      {
+        isDragActive ?
+          <p>Drop the files here ...</p> :
+          <p>Drag 'n' drop some files here, or click to select files</p>
+      }
+    </div>
+  )
+}
 
 class Resize extends React.Component {
 
@@ -25,7 +44,7 @@ class Resize extends React.Component {
     });
   };
 
-  FileDropped = async (event: React.DragEvent<HTMLInputElement>): Promise<void> => {
+  FileDropped = async (event: React.DragEvent<HTMLElement>): Promise<void> => {
     event.preventDefault();
     event.stopPropagation();
     const files = event.dataTransfer.files;
@@ -59,8 +78,18 @@ class Resize extends React.Component {
       <div id="Resize">
         <h1>リサイズ</h1>
         <p>画像をリサイズします。</p>
-        <input id="drag-div" onDrop={this.FileDropped} placeholder="ドラッグ＆ドロップ" />
+        <button id="drag-div" onDrop={this.FileDropped} placeholder="ドラッグ＆ドロップ" />
         <input type="file" onChange={this.FileSelected} />
+        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+          {({getRootProps, getInputProps}) => (
+            <section>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <p>Drag 'n' drop some files here, or click to select files</p>
+              </div>
+            </section>
+          )}
+        </Dropzone>
       </div>
     );
   }
