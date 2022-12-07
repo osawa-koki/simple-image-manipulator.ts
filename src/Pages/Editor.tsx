@@ -1,11 +1,11 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 
 import Jimp from 'jimp/browser/lib/jimp'
 import Dropzone from 'react-dropzone';
 
-import './Resize.scss';
+import './Editor.scss';
 
-class Resize extends React.Component {
+class Editor extends React.Component {
 
   image: Jimp | null = null;
 
@@ -64,7 +64,7 @@ class Resize extends React.Component {
 
   render(): React.ReactNode {
     return (
-      <div id="Resize">
+      <div id="Editor">
         <h1>画像編集サイト</h1>
         <p>画像を編集します。</p>
         <div>
@@ -87,4 +87,4 @@ class Resize extends React.Component {
   }
 }
 
-export default Resize;
+export default Editor;
