@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 
 import Jimp from 'jimp/browser/lib/jimp'
-import Dropzone , { useDropzone } from 'react-dropzone';
+import Dropzone from 'react-dropzone';
 
 import './Resize.scss';
 
@@ -46,7 +46,7 @@ class Resize extends React.Component {
         <Dropzone onDrop={(files: File[]) => {this.FileDropped(files)}}>
           {({getRootProps, getInputProps}) => (
             <section>
-              <div {...getRootProps()}>
+              <div id="DropZone" {...getRootProps()}>
                 <input {...getInputProps()} />
                 <p>画像ファイルをドロップして下さい。</p>
               </div>
