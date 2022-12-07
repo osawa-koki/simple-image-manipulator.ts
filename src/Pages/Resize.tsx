@@ -65,8 +65,8 @@ class Resize extends React.Component {
   render(): React.ReactNode {
     return (
       <div id="Resize">
-        <h1>リサイズ</h1>
-        <p>画像をリサイズします。</p>
+        <h1>画像編集サイト</h1>
+        <p>画像を編集します。</p>
         <div>
           <Dropzone onDrop={(files: File[]) => {this.FileDropped(files)}}>
             {({getRootProps, getInputProps}) => (
