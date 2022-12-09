@@ -11,6 +11,8 @@ class Editor extends React.Component {
 
   image: Jimp | null = null;
 
+  CanvasRef: React.RefObject<HTMLCanvasElement>;
+
   FileDropped = async (acceptedFiles: File[]): Promise<void> => {
     const file = acceptedFiles[0];
     await File2Jimp(file).then((image: Jimp): void => {
@@ -20,17 +22,11 @@ class Editor extends React.Component {
   };
 
   Draw = (): void => {
-    if (this.image === null) {
-      return;
-    }
+    if (this.image === null) return;
     const canvas = this.CanvasRef.current;
-    if (canvas === null) {
-      return;
-    }
+    if (canvas === null) return;
     const ctx = canvas.getContext('2d');
-    if (ctx === null) {
-      return;
-    }
+    if (ctx === null) return;
     const width = this.image.bitmap.width;
     const height = this.image.bitmap.height;
     canvas.width = width;
@@ -39,8 +35,6 @@ class Editor extends React.Component {
     imageData.data.set(this.image.bitmap.data);
     ctx.putImageData(imageData, 0, 0);
   };
-
-  CanvasRef: React.RefObject<HTMLCanvasElement>;
 
   constructor(props: any) {
     super(props);
