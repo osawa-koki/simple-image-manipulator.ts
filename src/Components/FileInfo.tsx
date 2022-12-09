@@ -28,7 +28,7 @@ function FileInfo(props: Props): JSX.Element {
           </tr>
           <tr>
             <th>最終更新日時</th>
-            <td>{new EasyDate(props?.file?.lastModified).ToString("yyyy年MM月dd日")}</td>
+            <td>{(props?.file !== null) ? new EasyDate(props?.file?.lastModified).ToString("yyyy年MM月dd日") : ''}</td>
           </tr>
           <tr>
             <th>画像形式</th>
@@ -36,7 +36,7 @@ function FileInfo(props: Props): JSX.Element {
           </tr>
           <tr>
             <th>画像サイズ</th>
-            <td>{jimp?.bitmap.width} x {jimp?.bitmap.height}</td>
+            <td>{(jimp !== null) ? `${jimp?.bitmap.width} x ${jimp?.bitmap.height}` : ''}</td>
           </tr>
         </tbody>
       </table>
