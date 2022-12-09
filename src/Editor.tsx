@@ -16,7 +16,7 @@ import FileInfo from './Components/FileInfo';
 
 enum tab_options {
   FileInfo = 'FileInfo',
-  Editor = 'Editor',
+  Export = 'Export',
 };
 
 type Props = {
@@ -94,7 +94,7 @@ class Editor extends React.Component {
           <div id="EditorMainTab">
             <ButtonGroup id="EditorMainTabs">
               <Button onClick={() => {this.setState({ tab: tab_options.FileInfo })}}>{tab_options.FileInfo}</Button>
-              <Button onClick={() => {this.setState({ tab: tab_options.Editor })}}>{tab_options.Editor}</Button>
+              <Button onClick={() => {this.setState({ tab: tab_options.Export })}}>{tab_options.Export}</Button>
             </ButtonGroup>
             <div id="EditorMainTabSelected">{this.state.tab}</div>
           </div>
