@@ -3,7 +3,7 @@ import React from 'react';
 import Jimp from 'jimp/browser/lib/jimp'
 import Dropzone from 'react-dropzone';
 
-import './Editor.scss';
+import './index.scss';
 
 class Editor extends React.Component {
 

@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +12,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#Editor {
+  margin: 1rem auto;
+  max-width: 1200px;
+  padding: 1rem;
+  #DropZone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 80px;
+    border: 1px black solid;
+    background-color: lightgray;
+  }
+  #SampleCanvas {
+    margin: 1rem 0;
+    max-width: 250px;
+    border: 1px black solid;
+  }
+}
+
