@@ -44,21 +44,21 @@ class Editor extends React.Component {
   render(): React.ReactNode {
     return (
       <div id="Editor">
-        <h1>画像編集サイト</h1>
-        <p>画像を編集します。</p>
-        <div>
-          <Dropzone onDrop={(files: File[]) => {this.FileDropped(files)}}>
-            {({getRootProps, getInputProps}) => (
-              <section>
+        <div id="EditorTop">
+          <div id="EditorHeader">
+            <h1>画像編集サイト</h1>
+            <p>画像を編集します。</p>
+          </div>
+          <div id="EditorImporter">
+            <Dropzone onDrop={(files: File[]) => {this.FileDropped(files)}}>
+              {({getRootProps, getInputProps}) => (
                 <div id="DropZone" {...getRootProps()}>
                   <input {...getInputProps()} />
                   <p>画像ファイルをドロップして下さい。</p>
                 </div>
-              </section>
-            )}
-          </Dropzone>
-        </div>
-        <div>
+              )}
+            </Dropzone>
+          </div>
           <canvas id="SampleCanvas" ref={this.CanvasRef}></canvas>
         </div>
       </div>
