@@ -11,10 +11,14 @@
     height: 80px;
     border: 1px black solid;
     background-color: lightgray;
+    &:hover {
+      color: white;
+      background-color: gray;
+    }
   }
   #SampleCanvas {
-    margin: 1rem 0;
-    max-width: 250px;
+    margin: 5rem 0;
+    width: 250px;
     border: 1px black solid;
   }
 }

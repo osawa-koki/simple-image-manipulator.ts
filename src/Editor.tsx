@@ -59,7 +59,7 @@ class Editor extends React.Component {
           </Dropzone>
         </div>
         <div>
-        <canvas id="SampleCanvas" ref={this.CanvasRef}></canvas>
+          <canvas id="SampleCanvas" ref={this.CanvasRef}></canvas>
         </div>
       </div>
     );
