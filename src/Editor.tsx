@@ -27,6 +27,7 @@ class Editor extends React.Component {
     tab: tab_options.FileInfo,
   };
 
+  file: File | null = null;
   image: Jimp | null = null;
 
   CanvasRef: React.RefObject<HTMLCanvasElement>;
@@ -35,6 +36,7 @@ class Editor extends React.Component {
     const file = acceptedFiles[0];
     await File2Jimp(file)
     .then((image: Jimp): void => {
+      this.file = file;
       this.image = image;
     })
     .catch((err: Error): void => {
