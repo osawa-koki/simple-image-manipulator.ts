@@ -14,7 +14,7 @@ import { image_mime_extensions } from './Common/ImageMimeExtensions';
 
 enum tab_options {
   FileInfo = 'FileInfo',
-  Editor = 'Editor'
+  Editor = 'Editor',
 };
 
 type props = {
