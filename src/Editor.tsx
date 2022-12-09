@@ -10,13 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Editor.scss';
 
 import File2Jimp from './Common/File2Jimp';
-
-const image_mime_extensions = {
-  'image/png': ['.png'],
-  'image/jpg': ['.jpg', '.jpeg'],
-  'image/gif': ['.gif'],
-  'image/webp': ['.webp'],
-};
+import { image_mime_extensions } from './Common/ImageMimeExtensions';
 
 enum tab_options {
   FileInfo = 'FileInfo',
