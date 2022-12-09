@@ -42,4 +42,22 @@
       max-height: 250px;
     }
   }
+  #EditorMain {
+    padding: 3rem;
+    #EditorMainTab {
+      display: flex;
+      align-items: center;
+      #EditorMainTabs {
+        margin-right: 3rem;
+      }
+      #EditorMainTabSelected {
+        font-size: 1.2rem;
+        font-weight: bold;
+        &::before {
+          content: ">>>";
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
 }

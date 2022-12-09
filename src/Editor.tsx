@@ -3,11 +3,28 @@ import React from 'react';
 import Jimp from 'jimp/browser/lib/jimp'
 import Dropzone from 'react-dropzone';
 
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './Editor.scss';
 
 import File2Jimp from './Common/File2Jimp';
 
+enum tab_options {
+  FileInfo = 'FileInfo',
+  Editor = 'Editor'
+};
+
+type props = {
+  tab: tab_options;
+};
+
 class Editor extends React.Component {
+
+  state: props = {
+    tab: tab_options.FileInfo,
+  };
 
   image: Jimp | null = null;
 
@@ -61,7 +78,15 @@ class Editor extends React.Component {
           </div>
           <canvas id="SampleCanvas" ref={this.CanvasRef}></canvas>
         </div>
-        <div id="EditorMain"></div>
+        <div id="EditorMain">
+          <div id="EditorMainTab">
+            <ButtonGroup id="EditorMainTabs">
+              <Button onClick={() => {this.setState({ tab: tab_options.FileInfo})}}>{tab_options.FileInfo}</Button>
+              <Button onClick={() => {this.setState({ tab: tab_options.Editor})}}>{tab_options.Editor}</Button>
+            </ButtonGroup>
+            <div id="EditorMainTabSelected">{this.state.tab}</div>
+          </div>
+        </div>
       </div>
     );
   }
