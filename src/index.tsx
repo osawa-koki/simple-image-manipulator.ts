@@ -10,6 +10,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Editor></Editor>
+    <Editor />
   </React.StrictMode>
 );
