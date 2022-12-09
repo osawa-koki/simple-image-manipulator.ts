@@ -61,6 +61,7 @@ class Editor extends React.Component {
           </div>
           <canvas id="SampleCanvas" ref={this.CanvasRef}></canvas>
         </div>
+        <div id="EditorMain"></div>
       </div>
     );
   }
