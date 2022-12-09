@@ -1,4 +1,5 @@
 import Jimp from 'jimp/browser/lib/jimp';
+import EasyDate from '../Common/EasyDate';
 
 import './FileInfo.scss';
 
@@ -24,6 +25,14 @@ function FileInfo(props: Props): JSX.Element {
           <tr>
             <th>ファイルタイプ</th>
             <td>{file?.type}</td>
+          </tr>
+          <tr>
+            <th>最終更新日時</th>
+            <td>{new EasyDate(props?.file?.lastModified).ToString("yyyy年MM月dd日")}</td>
+          </tr>
+          <tr>
+            <th>画像形式</th>
+            <td>{jimp?.getMIME()}</td>
           </tr>
           <tr>
             <th>画像サイズ</th>
