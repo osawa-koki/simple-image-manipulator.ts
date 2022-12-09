@@ -11,6 +11,13 @@ import './Editor.scss';
 
 import File2Jimp from './Common/File2Jimp';
 
+const image_mime_extensions = {
+  'image/png': ['.png'],
+  'image/jpg': ['.jpg', '.jpeg'],
+  'image/gif': ['.gif'],
+  'image/webp': ['.webp'],
+};
+
 enum tab_options {
   FileInfo = 'FileInfo',
   Editor = 'Editor'
@@ -32,8 +39,13 @@ class Editor extends React.Component {
 
   FileDropped = async (acceptedFiles: File[]): Promise<void> => {
     const file = acceptedFiles[0];
-    await File2Jimp(file).then((image: Jimp): void => {
+    await File2Jimp(file)
+    .then((image: Jimp): void => {
       this.image = image;
+    })
+    .catch((err: Error): void => {
+      console.log(err);
+      window.alert("画像ファイルのMIME対応が不正です。\nPNG・GIF・JPEG・WEBPのいずれかのファイルを指定して下さい。");
     });
     this.Draw();
   };
@@ -56,7 +68,7 @@ class Editor extends React.Component {
   constructor(props: any) {
     super(props);
     this.CanvasRef = React.createRef();
-  }
+  };
 
   render(): React.ReactNode {
     return (
@@ -67,10 +79,10 @@ class Editor extends React.Component {
             <p>画像を編集します。</p>
           </div>
           <div id="EditorImporter">
-            <Dropzone onDrop={(files: File[]) => {this.FileDropped(files)}}>
+            <Dropzone accept={image_mime_extensions} onDrop={(files: File[]) => {this.FileDropped(files)}}>
               {({getRootProps, getInputProps}) => (
                 <div id="DropZone" {...getRootProps()}>
-                  <input {...getInputProps()} />
+                  <input accept="image/png,image/jpg,image/gif,image/webp" {...getInputProps()} />
                   <p>画像ファイルをドロップして下さい。</p>
                 </div>
               )}

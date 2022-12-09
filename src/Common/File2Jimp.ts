@@ -9,8 +9,12 @@ const File2Jimp = async (file: File): Promise<Jimp> => {
         return;
       }
       const data = event.target.result as ArrayBuffer;
-      Jimp.read(data as Buffer).then((image: Jimp): void => {
+      Jimp.read(data as Buffer)
+      .then((image: Jimp): void => {
         resolve(image);
+      })
+      .catch((error: Error): void => {
+        reject(error);
       });
     };
     reader.readAsArrayBuffer(file);
