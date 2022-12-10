@@ -13,10 +13,10 @@ type Props = {
 };
 
 const options = [
-  { value: 'image/jpeg', label: 'JPEG' },
-  { value: 'image/png', label: 'PNG' },
-  { value: 'image/bmp', label: 'BMP' },
-  { value: 'image/tiff', label: 'TIFF' },
+  { value: 'image/png', label: 'PNG', ext: 'png' },
+  { value: 'image/jpeg', label: 'JPEG', ext: 'jpg' },
+  { value: 'image/bmp', label: 'BMP', ext: 'bmp' },
+  { value: 'image/tiff', label: 'TIFF', ext: 'tiff' },
 ];
 
 function Floor(n: number | undefined): number | undefined {
@@ -32,6 +32,7 @@ function Exporter(props: Props): JSX.Element {
   let [ height, setHeight ] = useState(props.jimp?.bitmap.height);
   let [ keepRatio, setKeepRatio ] = useState(true);
   let [ grayscale, setGrayscale ] = useState(false);
+  let [ filetype_message, setFiletypeMessage ] = useState('');
 
   function changeWidth(e: React.ChangeEvent<HTMLInputElement>) {
     if (keepRatio) {
@@ -53,6 +54,42 @@ function Exporter(props: Props): JSX.Element {
     }
   };
 
+  function mime_change(e: any) {
+    setFiletype(e.map((x: any) => x.value));
+    if (e.length === 0) {
+      setFiletypeMessage('ファイル形式を選択してください。');
+    } else {
+      setFiletypeMessage('');
+    }
+  };
+
+  function exportImage() {
+    let jimp = props.jimp?.clone();
+    if (grayscale) {
+      jimp?.greyscale();
+    }
+    jimp?.resize(width!, height!);
+    jimp?.quality(quality);
+    if (filetype.length === 0) {
+      setFiletypeMessage('ファイル形式を選択してください。');
+      return;
+    }
+    filetype.forEach((mime) => {
+      jimp?.getBuffer(mime, (err, buffer) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        let blob = new Blob([buffer], { type: mime });
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = `${filename!}.${options.find((x) => x.value === mime)?.ext ?? 'error'}`;
+        a.click();
+      });
+    });
+  };
+
   return (
     <div id='ExportDiv'>
       <table id="ExportTable">
@@ -64,7 +101,8 @@ function Exporter(props: Props): JSX.Element {
           <tr>
             <th>ファイルタイプ</th>
             <td>
-              <Select options={options} isMulti />
+              <Select options={options} isMulti onChange={mime_change} />
+              <p className='warning'>{filetype_message}</p>
             </td>
           </tr>
           <tr>
@@ -93,7 +131,7 @@ function Exporter(props: Props): JSX.Element {
         </tbody>
       </table>
       <div id='ExportButtonBox'>
-        <Button variant="success" size="lg">Export</Button>
+        <Button variant="success" size="lg" onClick={exportImage}>Export</Button>
       </div>
     </div>
   );
