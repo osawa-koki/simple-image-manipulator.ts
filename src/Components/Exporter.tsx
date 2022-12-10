@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Select from 'react-select'
 import Jimp from 'jimp/browser/lib/jimp';
 
 import './Exporter.scss';
@@ -7,6 +8,13 @@ type Props = {
   file: File | null;
   jimp: Jimp | null;
 };
+
+const options = [
+  { value: 'image/jpeg', label: 'JPEG' },
+  { value: 'image/png', label: 'PNG' },
+  { value: 'image/bmp', label: 'BMP' },
+  { value: 'image/tiff', label: 'TIFF' },
+];
 
 function Exporter(props: Props): JSX.Element {
   let [ filename , setFilename ] = useState(props.file?.name);
@@ -28,12 +36,7 @@ function Exporter(props: Props): JSX.Element {
           <tr>
             <th>ファイルタイプ</th>
             <td>
-              <select value={filetype} onChange={(e) => setFiletype([e.target.value])}>
-                <option value="image/jpeg">JPEG</option>
-                <option value="image/png">PNG</option>
-                <option value="image/bmp">BMP</option>
-                <option value="image/tiff">TIFF</option>
-              </select>
+              <Select options={options} isMulti />
             </td>
           </tr>
           <tr>
