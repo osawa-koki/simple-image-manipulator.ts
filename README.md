@@ -1,3 +1,8 @@
 # simple-image-manipulator.ts
 
-[jimp](https://www.npmjs.com/package/jimp)を使用してブラウザ上で動作する簡単な画像処理サイトを作りたい。  
+拡張子(画像フォーマット)の変更、画像サイズの変更、グレースケール化、などの基本的な画像編集ができるサイト。  
+Reactで実現。  
+
+## 参考文献
+
+- [jimp](https://www.npmjs.com/package/jimp)
