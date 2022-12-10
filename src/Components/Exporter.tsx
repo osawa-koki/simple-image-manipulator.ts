@@ -25,7 +25,7 @@ function Floor(n: number | undefined): number | undefined {
 }
 
 function Exporter(props: Props): JSX.Element {
-  let [ filename , setFilename ] = useState(props.file?.name);
+  let [ filename , setFilename ] = useState(Path.GetFileNameWithoutExtension(props.file?.name ?? ''));
   let [ filetype , setFiletype ] = useState([] as string[]);
   let [ quality  , setQuality  ] = useState(100);
   let [ width, setWidth ] = useState(props.jimp?.bitmap.width);
@@ -96,7 +96,7 @@ function Exporter(props: Props): JSX.Element {
         <tbody>
           <tr>
             <th>ファイル名</th>
-            <td><input type="text" value={Path.GetFileNameWithoutExtension(filename ?? props.file?.name ?? '')} onChange={(e) => setFilename(e.target.value)} /></td>
+            <td><input type="text" value={filename ?? props.file?.name ?? ''} onChange={(e) => setFilename(e.target.value)} /></td>
           </tr>
           <tr>
             <th>ファイルタイプ</th>
