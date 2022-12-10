@@ -13,6 +13,7 @@ import File2Jimp from './Common/File2Jimp';
 import { image_mime_extensions } from './Common/ImageMimeExtensions';
 
 import FileInfo from './Components/FileInfo';
+import Exporter from './Components/Exporter';
 
 enum tab_options {
   FileInfo = 'FileInfo',
@@ -101,7 +102,7 @@ class Editor extends React.Component {
           <div>
             {(this.state.tab === tab_options.FileInfo) ?
               <FileInfo file={this.state.file} jimp={this.state.jimp} /> :
-              <div></div>
+              <Exporter file={this.state.file} jimp={this.state.jimp} />
             }
           </div>
         </div>
