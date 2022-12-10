@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 100 100.00001"
+   version="1.1"
+   id="svg135"
+   sodipodi:docname="online.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   inkscape:export-filename="online.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview137"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="4.1776837"
+     inkscape:cx="61.158292"
+     inkscape:cy="67.022786"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs132" />
+  <g
+     inkscape:label="レイヤー 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1705"
+       transform="translate(0.95746837,0.23936709)">
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#00b900;stroke-width:5;stroke-dasharray:none;stroke-opacity:1"
+         id="path239"
+         cx="50.506454"
+         cy="51.224556"
+         r="31.117722" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#00b900;stroke-width:5;stroke-dasharray:none;stroke-opacity:1"
+         d="M 32.830614,46.757184 44.080867,61.119209 68.49631,39.576171"
+         id="path1701" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:'Copperplate Gothic Bold';-inkscape-font-specification:'Copperplate Gothic Bold, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffb900;fill-opacity:1;stroke:none;stroke-width:5;stroke-dasharray:none;stroke-opacity:1"
+       x="50.26709"
+       y="90.720131"
+       id="text1768"><tspan
+         sodipodi:role="line"
+         id="tspan1766"
+         x="50.26709"
+         y="90.720131">online</tspan></text>
+  </g>
+</svg>

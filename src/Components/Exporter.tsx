@@ -96,7 +96,7 @@ function Exporter(props: Props): JSX.Element {
         <tbody>
           <tr>
             <th>ファイル名</th>
-            <td><input type="text" value={filename ?? Path.GetFileNameWithoutExtension(props.file?.name ?? '')} onChange={(e) => setFilename(e.target.value)} /></td>
+            <td><input type="text" value={Path.GetFileNameWithoutExtension(filename ?? props.file?.name ?? '')} onChange={(e) => setFilename(e.target.value)} /></td>
           </tr>
           <tr>
             <th>ファイルタイプ</th>

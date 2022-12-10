@@ -12,6 +12,7 @@ import './Editor.scss';
 import File2Jimp from './Common/File2Jimp';
 import { image_mime_extensions } from './Common/ImageMimeExtensions';
 
+import Header from './Components/Header';
 import FileInfo from './Components/FileInfo';
 import Exporter from './Components/Exporter';
 
@@ -66,18 +67,39 @@ class Editor extends React.Component {
     ctx.putImageData(imageData, 0, 0);
   };
 
+  DrawInitial = (): void => {
+    const canvas = this.CanvasRef.current;
+    if (canvas === null) return;
+    const ctx = canvas.getContext('2d');
+    if (ctx === null) return;
+    const width = 400;
+    const height = 300;
+    const step = 20;
+    const hue_random = Math.floor(Math.random() * 360);
+    for (let x = 0; x < width; x += step) {
+      for (let y = 0; y < height; y += step) {
+        ctx.fillStyle = `hsl(${hue_random}, ${Math.random() * (90 - 10) + 10}%, 80%)`;
+        ctx.fillRect(x, y, step, step);
+      }
+    }
+  };
+
   constructor(props: any) {
     super(props);
     this.CanvasRef = React.createRef();
   };
 
+  componentDidMount(): void {
+    this.DrawInitial();
+  }
+
   render(): React.ReactNode {
     return (
       <div id="Editor">
+        <Header />
         <div id="EditorTop">
           <div id="EditorHeader">
-            <h1>画像編集サイト</h1>
-            <p>画像を編集します。</p>
+            <p>画像を編集します。<br />全てオフラインで完結しているため、データが外部に流出する危険性はありません。</p>
           </div>
           <div id="EditorImporter">
             <Dropzone accept={image_mime_extensions} onDrop={(files: File[]) => {this.FileDropped(files)}}>
