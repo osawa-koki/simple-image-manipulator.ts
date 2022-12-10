@@ -27,6 +27,26 @@ function Exporter(props: Props): JSX.Element {
   let [ keepRatio, setKeepRatio ] = useState(true);
   let [ grayscale, setGrayscale ] = useState(false);
 
+  function changeWidth(e: React.ChangeEvent<HTMLInputElement>) {
+    if (keepRatio) {
+      let ratio = props.jimp?.bitmap.height! / props.jimp?.bitmap.width!;
+      setWidth(parseInt(e.target.value));
+      setHeight(parseInt(e.target.value) * ratio);
+    } else {
+      setWidth(parseInt(e.target.value));
+    }
+  };
+
+  function changeHeight(e: React.ChangeEvent<HTMLInputElement>) {
+    if (keepRatio) {
+      let ratio = props.jimp?.bitmap.width! / props.jimp?.bitmap.height!;
+      setHeight(parseInt(e.target.value));
+      setWidth(parseInt(e.target.value) * ratio);
+    } else {
+      setHeight(parseInt(e.target.value));
+    }
+  };
+
   return (
     <div id='ExportDiv'>
       <table id="ExportTable">
@@ -44,14 +64,17 @@ function Exporter(props: Props): JSX.Element {
           <tr>
             <th>画像サイズ</th>
             <td>
-              <input type="number" value={width ?? props.jimp?.bitmap.width} onChange={(e) => setWidth(parseInt(e.target.value))} min='10' />
-              <span className='x_margin'>x</span>
-              <input type="number" value={height ?? props.jimp?.bitmap.height} onChange={(e) => setHeight(parseInt(e.target.value))} min='10' />
+              <input type="number" value={width ?? props.jimp?.bitmap.width} onChange={(e) => changeWidth(e)} min='10' />
+              <span className='horizontal_margin'>x</span>
+              <input type="number" value={height ?? props.jimp?.bitmap.height} onChange={(e) => changeHeight(e)} min='10' />
             </td>
           </tr>
           <tr>
             <th>縦横比を維持</th>
-            <td><input type="checkbox" checked={keepRatio} onChange={(e) => setKeepRatio(e.target.checked)} /></td>
+            <td>
+              <input type="checkbox" checked={keepRatio} onChange={(e) => setKeepRatio(e.target.checked)} />
+              {keepRatio && <span className='horizontal_margin'>縦横比: {props.jimp?.bitmap.height! / props.jimp?.bitmap.width!}</span>}
+            </td>
           </tr>
           <tr>
             <th>画質</th>
