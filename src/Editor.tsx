@@ -12,6 +12,7 @@ import './Editor.scss';
 import File2Jimp from './Common/File2Jimp';
 import { image_mime_extensions } from './Common/ImageMimeExtensions';
 
+import Header from './Components/Header';
 import FileInfo from './Components/FileInfo';
 import Exporter from './Components/Exporter';
 
@@ -74,10 +75,10 @@ class Editor extends React.Component {
   render(): React.ReactNode {
     return (
       <div id="Editor">
+        <Header />
         <div id="EditorTop">
           <div id="EditorHeader">
-            <h1>画像編集サイト</h1>
-            <p>画像を編集します。</p>
+            <p>画像を編集します。<br />全てオフラインで完結しているため、データが外部に流出する危険性はありません。</p>
           </div>
           <div id="EditorImporter">
             <Dropzone accept={image_mime_extensions} onDrop={(files: File[]) => {this.FileDropped(files)}}>
