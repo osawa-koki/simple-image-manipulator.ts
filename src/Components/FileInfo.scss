@@ -1,0 +1,12 @@
+
+#FileInfoDiv {
+  margin: 5rem 0;
+  padding: 1rem;
+  #FileInfoTable {
+    border-collapse: collapse;
+    th, td {
+      border: 1px solid black;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

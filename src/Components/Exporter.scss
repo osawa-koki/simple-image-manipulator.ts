@@ -1,0 +1,21 @@
+
+#ExportDiv {
+  margin: 3rem 0;
+  #ExportTable {
+    th, td {
+      padding: 0.5rem;
+      .horizontal_margin {
+        margin-right: 1rem;
+        margin-left: 1rem;
+      }
+      .warning {
+        color: red;
+      }
+    }
+  }
+  #ExportButtonBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
