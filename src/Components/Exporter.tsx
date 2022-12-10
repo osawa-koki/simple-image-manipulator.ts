@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Select from 'react-select'
 import Jimp from 'jimp/browser/lib/jimp';
 
+import { Path } from '../Common/Util';
+
 import './Exporter.scss';
 
 type Props = {
@@ -31,7 +33,7 @@ function Exporter(props: Props): JSX.Element {
         <tbody>
           <tr>
             <th>ファイル名</th>
-            <td><input type="text" value={filename ?? props.file?.name} onChange={(e) => setFilename(e.target.value)} /></td>
+            <td><input type="text" value={filename ?? Path.GetFileNameWithoutExtension(props.file?.name ?? '')} onChange={(e) => setFilename(e.target.value)} /></td>
           </tr>
           <tr>
             <th>ファイルタイプ</th>
@@ -42,9 +44,9 @@ function Exporter(props: Props): JSX.Element {
           <tr>
             <th>画像サイズ</th>
             <td>
-              <input type="number" value={width ?? props.jimp?.bitmap.width} onChange={(e) => setWidth(parseInt(e.target.value))} />
-              x
-              <input type="number" value={height ?? props.jimp?.bitmap.height} onChange={(e) => setHeight(parseInt(e.target.value))} />
+              <input type="number" value={width ?? props.jimp?.bitmap.width} onChange={(e) => setWidth(parseInt(e.target.value))} min='10' />
+              <span className='x_margin'>x</span>
+              <input type="number" value={height ?? props.jimp?.bitmap.height} onChange={(e) => setHeight(parseInt(e.target.value))} min='10' />
             </td>
           </tr>
           <tr>
@@ -53,7 +55,7 @@ function Exporter(props: Props): JSX.Element {
           </tr>
           <tr>
             <th>画質</th>
-            <td><input type="number" value={quality} onChange={(e) => setQuality(parseInt(e.target.value))} /></td>
+            <td><input type="number" value={quality} onChange={(e) => setQuality(parseInt(e.target.value))} min='10' /></td>
           </tr>
           <tr>
             <th>グレースケール</th>
