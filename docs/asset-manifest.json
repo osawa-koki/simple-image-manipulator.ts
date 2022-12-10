@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/simple-image-manipulator.ts/static/css/main.55c67082.css",
+    "main.js": "/simple-image-manipulator.ts/static/js/main.115007b3.js",
+    "index.html": "/simple-image-manipulator.ts/index.html",
+    "main.55c67082.css.map": "/simple-image-manipulator.ts/static/css/main.55c67082.css.map",
+    "main.115007b3.js.map": "/simple-image-manipulator.ts/static/js/main.115007b3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55c67082.css",
+    "static/js/main.115007b3.js"
+  ]
+}
