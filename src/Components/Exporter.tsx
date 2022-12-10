@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select'
 import Jimp from 'jimp/browser/lib/jimp';
+import Button from 'react-bootstrap/Button';
 
 import { Path } from '../Common/Util';
 
@@ -91,6 +92,9 @@ function Exporter(props: Props): JSX.Element {
           </tr>
         </tbody>
       </table>
+      <div id='ExportButtonBox'>
+        <Button variant="success" size="lg">Export</Button>
+      </div>
     </div>
   );
 }
