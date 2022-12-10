@@ -18,6 +18,11 @@ const options = [
   { value: 'image/tiff', label: 'TIFF' },
 ];
 
+function Floor(n: number | undefined): number | undefined {
+  if (n === undefined) return undefined;
+  return Math.floor(n);
+}
+
 function Exporter(props: Props): JSX.Element {
   let [ filename , setFilename ] = useState(props.file?.name);
   let [ filetype , setFiletype ] = useState([] as string[]);
@@ -31,7 +36,7 @@ function Exporter(props: Props): JSX.Element {
     if (keepRatio) {
       let ratio = props.jimp?.bitmap.height! / props.jimp?.bitmap.width!;
       setWidth(parseInt(e.target.value));
-      setHeight(parseInt(e.target.value) * ratio);
+      setHeight(Floor(parseInt(e.target.value) * ratio));
     } else {
       setWidth(parseInt(e.target.value));
     }
@@ -41,7 +46,7 @@ function Exporter(props: Props): JSX.Element {
     if (keepRatio) {
       let ratio = props.jimp?.bitmap.width! / props.jimp?.bitmap.height!;
       setHeight(parseInt(e.target.value));
-      setWidth(parseInt(e.target.value) * ratio);
+      setWidth(Floor(parseInt(e.target.value) * ratio));
     } else {
       setHeight(parseInt(e.target.value));
     }
