@@ -67,10 +67,31 @@ class Editor extends React.Component {
     ctx.putImageData(imageData, 0, 0);
   };
 
+  DrawInitial = (): void => {
+    const canvas = this.CanvasRef.current;
+    if (canvas === null) return;
+    const ctx = canvas.getContext('2d');
+    if (ctx === null) return;
+    const width = 400;
+    const height = 300;
+    const step = 20;
+    const hue_random = Math.floor(Math.random() * 360);
+    for (let x = 0; x < width; x += step) {
+      for (let y = 0; y < height; y += step) {
+        ctx.fillStyle = `hsl(${hue_random}, ${Math.random() * (90 - 10) + 10}%, 80%)`;
+        ctx.fillRect(x, y, step, step);
+      }
+    }
+  };
+
   constructor(props: any) {
     super(props);
     this.CanvasRef = React.createRef();
   };
+
+  componentDidMount(): void {
+    this.DrawInitial();
+  }
 
   render(): React.ReactNode {
     return (
