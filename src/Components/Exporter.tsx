@@ -42,9 +42,9 @@ function Exporter(props: Props): JSX.Element {
           <tr>
             <th>画像サイズ</th>
             <td>
-              <input type="number" value={props.jimp?.bitmap.width ?? width} onChange={(e) => setWidth(parseInt(e.target.value))} />
+              <input type="number" value={width ?? props.jimp?.bitmap.width} onChange={(e) => setWidth(parseInt(e.target.value))} />
               x
-              <input type="number" value={props.jimp?.bitmap.height ?? height} onChange={(e) => setHeight(parseInt(e.target.value))} />
+              <input type="number" value={height ?? props.jimp?.bitmap.height} onChange={(e) => setHeight(parseInt(e.target.value))} />
             </td>
           </tr>
           <tr>

@@ -1,4 +1,9 @@
 
 #ExportDiv {
   margin: 3rem 0;
+  #ExportTable {
+    th, td {
+      padding: 0.5rem;
+    }
+  }
 }
